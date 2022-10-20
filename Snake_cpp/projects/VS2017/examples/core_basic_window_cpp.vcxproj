@@ -325,17 +325,17 @@
     <ClCompile Include="..\..\..\Main.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="SnakeAll.cpp" />
-    <ClCompile Include="SnakePart.cpp" />
+    <ClCompile Include="SnakeBodyPart.cpp" />
+    <ClCompile Include="WholeSnake.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\Desktop\ARTFX\CPP Projects\Snake_cpp\projects\VS2017\SnakeBodyPart.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Desktop\ARTFX\CPP Projects\Snake_cpp\projects\VS2017\WholeSnake.h" />
     <ClInclude Include="..\Apple.h" />
     <ClInclude Include="..\Collisions.h" />
     <ClInclude Include="..\Grid.h" />
     <ClInclude Include="..\MathHelper.h" />
     <ClInclude Include="..\RectangleInt.h" />
-    <ClInclude Include="..\SnakeAll.h" />
-    <ClInclude Include="..\SnakePart.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

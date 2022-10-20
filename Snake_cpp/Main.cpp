@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
 void Update() {
     timerMovement++;
 
-    snake.Update(gameGrid);
+    //snake.Update(gameGrid);
 
     /*RectangleInt appleCollider = apple.GetRect();
     RectangleInt snakeCollider = snakeVector[0]->GetRect();
@@ -99,7 +99,7 @@ void Update() {
     if (timerMovement >= maxTimerMovement) { //buffered update
         timerMovement = 0;
         
-        snake.UpdateMovement(gameGrid);
+        //snake.UpdateMovement(gameGrid);
 
 
         //if (!newHeadTrigger) {

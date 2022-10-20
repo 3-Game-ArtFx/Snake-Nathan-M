@@ -4,18 +4,18 @@
     <ClCompile Include="..\..\..\Main.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Apple.cpp" />
-    <ClCompile Include="SnakePart.cpp" />
-    <ClCompile Include="SnakeAll.cpp" />
+    <ClCompile Include="WholeSnake.cpp" />
+    <ClCompile Include="SnakeBodyPart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="..\Grid.h" />
     <ClInclude Include="..\MathHelper.h" />
     <ClInclude Include="..\Apple.h" />
-    <ClInclude Include="..\SnakePart.h" />
     <ClInclude Include="..\RectangleInt.h" />
     <ClInclude Include="..\Collisions.h" />
-    <ClInclude Include="..\SnakeAll.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Desktop\ARTFX\CPP Projects\Snake_cpp\projects\VS2017\WholeSnake.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\Desktop\ARTFX\CPP Projects\Snake_cpp\projects\VS2017\SnakeBodyPart.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
