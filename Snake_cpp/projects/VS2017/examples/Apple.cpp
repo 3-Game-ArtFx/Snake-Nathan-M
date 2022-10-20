@@ -3,6 +3,7 @@
 
 #include <stdlib.h> 
 #include <time.h>
+#include <WholeSnake.h>
 
 
 Texture2D _appleTexture;
@@ -23,6 +24,10 @@ Apple::~Apple() {
 
 //Generate a random position on my grid
 Vector2Int Apple::RandomPosition(Vector2Int _gridSize) {
+    
+    
+    
+    
     Vector2Int randPos;
 
     srand(time(NULL));
@@ -35,6 +40,11 @@ Vector2Int Apple::RandomPosition(Vector2Int _gridSize) {
 
 void Apple::SetItemTexture(Texture2D _textureItem) {
     _appleTexture = _textureItem;
+}
+
+Vector2Int Apple::RandomPosition(Vector2Int _gridSize, WholeSnake _snake)
+{
+    return Vector2Int();
 }
 
 void Apple::Draw(Grid _grid) {

@@ -2,6 +2,7 @@
 #include "MathHelper.h"
 #include "Grid.h"
 #include "RectangleInt.h"
+#include "WholeSnake.h"
 
 class Apple
 {
@@ -13,7 +14,7 @@ public:
 
     void SetItemTexture(Texture2D _itemTexture);
     
-    Vector2Int RandomPosition(Vector2Int _gridSize);
+    Vector2Int RandomPosition(Vector2Int _gridSize, WholeSnake _snake);
 
     void Draw(Grid _grid);
     void Update();

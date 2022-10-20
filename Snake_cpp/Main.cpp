@@ -20,7 +20,7 @@ const int SCREEN_WIDTH = 650;
 const int SCREEN_HEIGHT = 650;
 
 int timerMovement = 0;
-const int maxTimerMovement = 25; //1/6s buffer for each movement
+const int maxTimerMovement =12; //1/6s buffer for each movement
 
 Texture2D tileTexture;
 Texture2D appleTexture;
@@ -37,7 +37,7 @@ Apple apple(gameGrid, applePos);
 WholeSnake snake;
 
 bool newHeadTrigger = false;
-
+bool newHeadTriggerAdd = false;
 
 int main(int argc, char* argv[])
 {
@@ -73,41 +73,28 @@ void Update() {
 
     snake.Update(gameGrid);
 
-    /*RectangleInt appleCollider = apple.GetRect();
-    RectangleInt snakeCollider = snakeVector[0]->GetRect();
-    bool snakeCollideApple = appleCollider.x == snakeCollider.x && appleCollider.y == snakeCollider.y;*/
-
-    /*for (SnakePart* sp : snakeVector) {
-        cout << sp->GetPos().x << endl;
-    }*/
-
     RectangleInt appleCollider = apple.GetRect();
     RectangleInt snakeHeadCollider = snake.GetHead()->GetHitbox();
-    cout << snakeHeadCollider.x << " " << snakeHeadCollider.y << endl;
-
+    //cout << snakeHeadCollider.x << " " << snakeHeadCollider.y << endl;
+    bool snakeCollideApple = appleCollider.x == snakeHeadCollider.x && appleCollider.y == snakeHeadCollider.y;
 
     if (snakeCollideApple && !newHeadTrigger) {
         //TP APPLE
         apple.Collected(gameGrid);
+        newHeadTriggerAdd = snake.AddTail(snake.GetHead()->GetPosition().x, snake.GetHead()->GetPosition().y);
         newHeadTrigger = true;
-        /*for (SnakePart* sp : snakeVector) {
-            cout << sp->GetPos().x << endl;
-        }*/
-        //SnakePart snakeBodyPart(snakeVector[0]->GetPos(), false);
-        //snakeVector.push_back(&snakeBodyPart);
-        /*for (SnakePart* sp : snakeVector) {
-            cout << sp->GetPos().x << endl;
-        }*/
-
-        //SOMEWHERE AFTER IT GET A CRAZY POSITION, like overflowing
-        // 
-        //ADD HEAD
     }
 
     if (timerMovement >= maxTimerMovement) { //buffered update
         timerMovement = 0;
+
+        snake.UpdateMovement(gameGrid, newHeadTriggerAdd);
+
+        if (newHeadTriggerAdd) {
+            newHeadTriggerAdd = false;
+        }
         
-        snake.UpdateMovement(gameGrid);
+        newHeadTrigger = false;
 
 
         //if (!newHeadTrigger) {

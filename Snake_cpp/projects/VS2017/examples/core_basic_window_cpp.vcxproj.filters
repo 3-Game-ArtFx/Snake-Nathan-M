@@ -6,6 +6,7 @@
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="WholeSnake.cpp" />
     <ClCompile Include="SnakeBodyPart.cpp" />
+    <ClCompile Include="..\MathHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />

@@ -5,11 +5,14 @@ WholeSnake::WholeSnake()
 	snakeVector.push_back(SnakeBodyPart());
 	dir = { 1,0 };
 	isAlive = true;
+	//positionWhereToAddTail = { snakeVector[0].GetPosition().x + dir.x, snakeVector[0].GetPosition().y + dir.y };
+	lastPositionOfAllBody.push_back(snakeVector[0].GetPosition());
 }
 
 WholeSnake::~WholeSnake()
 {
 	snakeVector.~vector();
+	lastPositionOfAllBody.~vector();
 }
 
 void WholeSnake::Update(Grid _grid)
@@ -17,6 +20,7 @@ void WholeSnake::Update(Grid _grid)
 	if (isAlive) {
 		WholeSnake::InputCheck();
 		WholeSnake::OutOfBoundsCheck(_grid);
+		
 	}
 }
 
@@ -43,23 +47,44 @@ void WholeSnake::OutOfBoundsCheck(Grid _grid)
 	}
 }
 
-void WholeSnake::AddTail(int _x, int _y)
+void WholeSnake::HeadCollideWithBodyCheck()
 {
-	snakeVector.insert(snakeVector.begin(), SnakeBodyPart(_x, _y));
-	cout << "NEW BODY" << endl;
+	SnakeBodyPart* head = &snakeVector[0];
+
+	for (int i = 1; i < snakeVector.size(); i++) {
+		if (head->GetPosition().x == snakeVector[i].GetPosition().x && head->GetPosition().y == snakeVector[i].GetPosition().y)
+		{
+			cout << "DEAD" << endl;
+			isAlive = false;
+		}
+	}
 }
 
-void WholeSnake::UpdateMovement(Grid _grid)
+
+
+bool WholeSnake::AddTail(int _x, int _y) //actually it add a tail but it's ok
 {
-	//cout << "test" << endl;
+	//snakeVector.insert(snakeVector.begin(), SnakeBodyPart(_x, _y));
+	snakeVector.push_back(SnakeBodyPart(_x, _y));
+	cout << "NEW BODY" << endl;
+	return true;
+
+}
+
+void WholeSnake::UpdateMovement(Grid _grid,bool _onlyHeadMove)
+{
+	WholeSnake::SaveAllPosition(); //save all the current positions
+
 	SnakeBodyPart* head = &snakeVector[0];
 	head->AddToPosition(dir.x, dir.y);
 
-	/*if (snakeVector.size() > 1) {
+	if (snakeVector.size() > 1) {
 		for (int n = 1; n < snakeVector.size(); n++) {
-
+			snakeVector[n].SetPosition(lastPositionOfAllBody[n - 1].x, lastPositionOfAllBody[n - 1].y);
 		}
-	}*/
+	}
+
+	WholeSnake::HeadCollideWithBodyCheck();
 }
 
 

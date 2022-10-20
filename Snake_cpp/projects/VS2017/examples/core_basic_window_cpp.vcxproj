@@ -224,6 +224,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)..\..\src;C:\Users\merci\Desktop\ARTFX\CPP Projects\Snake_cpp\projects\VS2017;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -323,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Main.cpp" />
+    <ClCompile Include="..\MathHelper.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="SnakeBodyPart.cpp" />
