@@ -8,6 +8,9 @@
 #include "Apple.h"
 //#include "SnakePart.h"
 //#include "SnakeAll.h"
+
+
+#include "WholeSnake.h"
 #include "Collisions.h"
 
 
@@ -31,6 +34,7 @@ Apple apple(gameGrid, applePos);
 
 //SnakeAll snake({ 5,8 });
 
+WholeSnake snake;
 
 bool newHeadTrigger = false;
 
@@ -67,7 +71,7 @@ int main(int argc, char* argv[])
 void Update() {
     timerMovement++;
 
-    //snake.Update(gameGrid);
+    snake.Update(gameGrid);
 
     /*RectangleInt appleCollider = apple.GetRect();
     RectangleInt snakeCollider = snakeVector[0]->GetRect();
@@ -77,29 +81,33 @@ void Update() {
         cout << sp->GetPos().x << endl;
     }*/
 
+    RectangleInt appleCollider = apple.GetRect();
+    RectangleInt snakeHeadCollider = snake.GetHead()->GetHitbox();
+    cout << snakeHeadCollider.x << " " << snakeHeadCollider.y << endl;
 
-    //if (snakeCollideApple && !newHeadTrigger) {
-    //    //TP APPLE
-    //    apple.Collected(gameGrid);
-    //    newHeadTrigger = true;
-    //    /*for (SnakePart* sp : snakeVector) {
-    //        cout << sp->GetPos().x << endl;
-    //    }*/
-    //    //SnakePart snakeBodyPart(snakeVector[0]->GetPos(), false);
-    //    //snakeVector.push_back(&snakeBodyPart);
-    //    /*for (SnakePart* sp : snakeVector) {
-    //        cout << sp->GetPos().x << endl;
-    //    }*/
 
-    //    //SOMEWHERE AFTER IT GET A CRAZY POSITION, like overflowing
-    //    // 
-    //    //ADD HEAD
-    //}
+    if (snakeCollideApple && !newHeadTrigger) {
+        //TP APPLE
+        apple.Collected(gameGrid);
+        newHeadTrigger = true;
+        /*for (SnakePart* sp : snakeVector) {
+            cout << sp->GetPos().x << endl;
+        }*/
+        //SnakePart snakeBodyPart(snakeVector[0]->GetPos(), false);
+        //snakeVector.push_back(&snakeBodyPart);
+        /*for (SnakePart* sp : snakeVector) {
+            cout << sp->GetPos().x << endl;
+        }*/
+
+        //SOMEWHERE AFTER IT GET A CRAZY POSITION, like overflowing
+        // 
+        //ADD HEAD
+    }
 
     if (timerMovement >= maxTimerMovement) { //buffered update
         timerMovement = 0;
         
-        //snake.UpdateMovement(gameGrid);
+        snake.UpdateMovement(gameGrid);
 
 
         //if (!newHeadTrigger) {
@@ -133,7 +141,7 @@ void Draw() {
     gameGrid.Draw();
     apple.Draw(gameGrid);
 
-    /*snake.Draw(gameGrid);*/
+    snake.Draw(gameGrid);
 
     /*if (!snake.GetHead()->IsAlive()) {
         DrawText("GAME OVER", (SCREEN_WIDTH / 2) - 80, SCREEN_HEIGHT / 2 - 50, 32, WHITE);
