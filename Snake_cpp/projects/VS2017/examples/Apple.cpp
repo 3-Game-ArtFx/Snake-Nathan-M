@@ -29,7 +29,7 @@ Vector2Int Apple::RandomPosition(Vector2Int _gridSize) {
 
     srand(time(NULL));
     randPos.x = rand() % _gridSize.x;
-    srand(time(NULL));
+    srand(time(NULL)*100);
     randPos.y = rand() % _gridSize.y;
 
     return randPos;

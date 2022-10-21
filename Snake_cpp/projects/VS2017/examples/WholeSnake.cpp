@@ -62,16 +62,15 @@ void WholeSnake::HeadCollideWithBodyCheck()
 
 
 
-bool WholeSnake::AddTail(int _x, int _y) //actually it add a tail but it's ok
+void WholeSnake::AddTail(int _x, int _y) //actually it add a tail but it's ok
 {
 	//snakeVector.insert(snakeVector.begin(), SnakeBodyPart(_x, _y));
 	snakeVector.push_back(SnakeBodyPart(_x, _y));
 	cout << "NEW BODY" << endl;
-	return true;
 
 }
 
-void WholeSnake::UpdateMovement(Grid _grid,bool _onlyHeadMove)
+void WholeSnake::UpdateMovement(Grid _grid)
 {
 	WholeSnake::SaveAllPosition(); //save all the current positions
 
